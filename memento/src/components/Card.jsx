@@ -12,6 +12,7 @@ const Card = ({ image, selected, onClick }) => {
           alt="card back" 
           className="card-back" 
           src={'/assets/valorant.png'}
+          onClick={onClick}
         />
       </div>
     </div>
