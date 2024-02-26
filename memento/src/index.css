@@ -80,7 +80,7 @@ button {
 .grid {
   gap: 1.25rem;
   display: grid;
-  margin: 3rem auto;
+  margin: 0.5rem auto;
   grid-template-columns: repeat(4, auto);
 }
 

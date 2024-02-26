@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import shuffle from './utilities/shuffle';
 import Card from './components/Card';
 import Header from './components/header';
+import useAppBadge from './hooks/useAppBadge';
 
 // creting different folder for orientating.
 
@@ -18,6 +19,9 @@ function App() {
   // check how many time you win the game
   const [wins, setWins] = useState(0);
 
+  // to see the counter in app badge icon
+  const [setBadge, clearBadge] = useAppBadge();
+
   const handleClick = (card) => {
     if (!disable) {
       pickOne ? setPickTwo(card) : setPickOne(card);
@@ -31,6 +35,7 @@ function App() {
   }
 
   const handleNewGame = () => {
+    clearBadge();
     setWins(0);
     handleTurn();
     setCards(shuffle);
@@ -68,6 +73,7 @@ function App() {
     const UnMatchCards = cards.filter((card) => !card.matched);
     if (cards.length && UnMatchCards.length < 1) {
       console.log("You Win!");
+      setBadge();
       setWins(wins + 1);
       setCards(shuffle);
       handleTurn();
